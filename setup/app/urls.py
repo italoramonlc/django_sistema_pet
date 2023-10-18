@@ -17,4 +17,5 @@ urlpatterns = [
     path('login',autenticacao_views.login_usuario,name="login"),
     path('logout',autenticacao_views.deslogar_usuario,name="logout"),
     path('enviar_consulta/<int:id>',consulta_views.enviar_email_consulta,name="enviar_consulta"),
+    path('gerar_relatorio_clientes',cliente_views.gerar_pdf_clientes,name="gerar_pdf_clientes")
 ]

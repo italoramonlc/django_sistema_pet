@@ -86,6 +86,14 @@ DATABASES = {
     }
 }
 
+# cache
+CACHES = {
+    'default':{
+        'BACKEND':'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION':'tabela_cache',
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -138,3 +146,4 @@ EMAIL_USER_TLS = True
 EMAIL_POST = 587
 EMAIL_HOST_USER = "italo.ramon2020@gmail.com"
 EMAIL_HOST_PASSWORD = ""
+

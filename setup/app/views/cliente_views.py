@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
+from django.views.decorators.cache import cache_page
 from weasyprint import HTML
 
 from ..forms.clientes_forms import ClienteForm
@@ -11,8 +12,11 @@ from ..forms.endereco_forms import EnderecoClienteForm
 from ..entidades import cliente, endereco
 from ..services import cliente_service, endereco_service, pet_service, consulta_service
 
-
+# site do pacote https://www.npmjs.com/package/loadtest
+# instala o pagode npm install -g loadtest
+# loadtest -n 100 -k http://127.0.0.1:8000/app/listar_clientes
 @login_required()
+@cache_page(60)
 def listar_clientes(request):
     clientes = cliente_service.Listar_clientes()
     return render(request, "clientes/lista_clientes.html", {"clientes": clientes})
